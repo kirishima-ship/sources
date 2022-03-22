@@ -8,6 +8,13 @@ export interface DeezerTrack {
 	album: DeezerAlbum;
 }
 
+export interface DeezerPlaylist {
+	tracks: {
+		data: DeezerTrack[];
+	};
+	title: string;
+}
+
 export interface DeezerAlbum {
 	id: number;
 	title: string;
