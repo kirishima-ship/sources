@@ -10,6 +10,13 @@
     "lint:fix": {
       "outpus": []
     },
+    "prepareForRelease": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "release": {
+      "outputs": []
+    },
     "dev": {
       "cache": false
     }

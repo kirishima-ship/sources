@@ -18,7 +18,9 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepareForRelease": "turbo run prepareForRelease",
+    "release": "turbo run release"
   },
   "devDependencies": {
     "prettier": "^2.5.1",

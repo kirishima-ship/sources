@@ -21,7 +21,9 @@
     "build": "rimraf dist && unbuild && tsc",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier --write {src,tests}/**/*.ts"
+    "format": "prettier --write {src,tests}/**/*.ts",
+    "prepareForRelease": "npm run build && npm run format && npm run lint && npm run lint:fix",
+    "release": "npm npm publish --access public || true"
   },
   "devDependencies": {
     "@babel/types": "7.17.0",
