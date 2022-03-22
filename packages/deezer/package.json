@@ -23,7 +23,7 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write {src,tests}/**/*.ts",
     "prepareForRelease": "npm run build && npm run format && npm run lint && npm run lint:fix",
-    "release": "npm npm publish --access public || true"
+    "release": "npm publish --access public"
   },
   "devDependencies": {
     "@babel/types": "7.17.0",
