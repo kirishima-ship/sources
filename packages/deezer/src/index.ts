@@ -1,8 +1,15 @@
-import { Kirishima, KirishimaNode, KirishimaPlugin, LoadTrackResponse, KirishimaTrack } from '@kirishima/core';
+import {
+	Kirishima,
+	KirishimaNode,
+	KirishimaPlugin,
+	LoadTrackResponse,
+	KirishimaTrack,
+	KirishimaPartialTrack as OKirishimaPartialTrack
+} from '@kirishima/core';
 import { fetch, FetchResultTypes } from '@kirishima/fetch';
 import { LoadTypeEnum } from 'lavalink-api-types';
 import { KirishimaPartialTrack } from './Structures/KirishimaPartialTrack';
-import type { DeezerTrack, KirishimaLoadTracks } from './typings';
+import type { DeezerTrack } from './typings';
 
 export class KirishimaDeezer extends KirishimaPlugin {
 	private resolvers = {
@@ -14,7 +21,7 @@ export class KirishimaDeezer extends KirishimaPlugin {
 	private _resolveTracks!: (
 		options: string | { source?: string | undefined; query: string },
 		node?: KirishimaNode
-	) => Promise<LoadTrackResponse<KirishimaPartialTrack | KirishimaTrack>>;
+	) => Promise<LoadTrackResponse<OKirishimaPartialTrack | KirishimaTrack>>;
 
 	public constructor() {
 		super({
@@ -24,13 +31,13 @@ export class KirishimaDeezer extends KirishimaPlugin {
 
 	public load(kirishima: Kirishima) {
 		this._resolveTracks = kirishima.resolveTracks.bind(kirishima);
-		kirishima.resolveTracks = this.resolveTracks.bind(this) as KirishimaLoadTracks;
+		kirishima.resolveTracks = this.resolveTracks.bind(this);
 	}
 
 	public resolveTracks(
 		options: string | { source?: string | undefined; query: string },
 		node?: KirishimaNode
-	): Promise<LoadTrackResponse<KirishimaPartialTrack | KirishimaTrack>> {
+	): Promise<LoadTrackResponse<OKirishimaPartialTrack | KirishimaTrack>> {
 		const query = typeof options === 'string' ? options : options.query;
 		const [, type, id] = query.match(this.regex) ?? [];
 

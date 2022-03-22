@@ -1,5 +1,3 @@
-import type { KirishimaNode, KirishimaTrack, LoadTrackResponse } from '@kirishima/core';
-
 export interface DeezerTrack {
 	id: number;
 	title: string;
@@ -20,8 +18,3 @@ export interface DeezerArtist {
 	id: number;
 	name: string;
 }
-
-export type KirishimaLoadTracks = (
-	options: string | { source?: string | undefined; query: string },
-	node?: KirishimaNode
-) => Promise<LoadTrackResponse<KirishimaTrack>>;
