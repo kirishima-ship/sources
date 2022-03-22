@@ -22,7 +22,7 @@ import { Kirishima } from "@kirishima/core";
 
 const kirishima = new Kirishima({
     plugins: [
-        new KirishimaQueue()
+        new KirishimaDeezer()
     ]
 });
 ```
