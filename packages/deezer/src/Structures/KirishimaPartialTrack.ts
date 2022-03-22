@@ -23,5 +23,6 @@ declare module '@kirishima/core' {
 
 	export interface KirishimaPartialTrack {
 		isrc: string | null;
+		artworkurl: string | null;
 	}
 }
