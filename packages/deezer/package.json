@@ -4,7 +4,15 @@
   "author": {
     "name": "KagChi"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "license": "GPL-3.0",
   "repository": {
     "url": "https://github.com/kirishima-ship/sources"
