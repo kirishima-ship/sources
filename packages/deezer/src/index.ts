@@ -1,7 +1,8 @@
-import { Kirishima, KirishimaNode, KirishimaPlugin, LoadTrackResponse, KirishimaTrack } from '@kirishima/core';
+import { Kirishima, KirishimaNode, KirishimaPlugin, LoadTrackResponse, KirishimaTrack, Structure } from '@kirishima/core';
 import { fetch, FetchResultTypes } from '@kirishima/fetch';
 import { LoadTypeEnum } from 'lavalink-api-types';
 import { KirishimaPartialTrack } from './Structures/KirishimaPartialTrack';
+import { KirishimaPlayer } from './Structures/KirisihimaPlayer';
 import type { DeezerPlaylist, DeezerTrack } from './typings';
 
 export class KirishimaDeezer extends KirishimaPlugin {
@@ -25,6 +26,7 @@ export class KirishimaDeezer extends KirishimaPlugin {
 	}
 
 	public load(kirishima: Kirishima) {
+		Structure.extend('KirishimaPlayer', () => KirishimaPlayer);
 		this._resolveTracks = kirishima.resolveTracks.bind(kirishima);
 		kirishima.resolveTracks = this.resolveTracks.bind(this);
 	}
