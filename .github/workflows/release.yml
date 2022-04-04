@@ -1,9 +1,10 @@
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - "main"
 jobs:
-  generate:
+  release:
+    if: github.actor == 'KagChi'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,6 +22,6 @@ jobs:
         run: yarn build
       - name: Publish source
         run: |
-          npm publish --access public || true
+          npm run release
         env:
           NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
