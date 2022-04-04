@@ -17,6 +17,9 @@
     "release": {
       "outputs": []
     },
+    "test": {
+      "outputs": []
+    },
     "dev": {
       "cache": false
     }

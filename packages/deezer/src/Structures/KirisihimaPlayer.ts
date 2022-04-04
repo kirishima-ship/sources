@@ -7,6 +7,6 @@ export class KirishimaPlayer extends Structure.get('KirishimaPlayer') {
 			return this.kirishima.resolveTracks(track.isrc);
 		}
 
-		return this.kirishima.resolveTracks(`${track.info.title} - ${track.info.author ? track.info.author : ''}`);
+		return this.kirishima.resolveTracks(`${track.info?.title} - ${track.info?.author ? track.info.author : ''}`);
 	}
 }

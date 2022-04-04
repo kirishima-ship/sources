@@ -1,4 +1,4 @@
-import { Kirishima, KirishimaNode, KirishimaPlugin, LoadTrackResponse, KirishimaTrack, Structure } from '@kirishima/core';
+import { Kirishima, KirishimaNode, KirishimaPlugin, LoadTrackResponse, Structure } from '@kirishima/core';
 import { fetch, FetchResultTypes } from '@kirishima/fetch';
 import { LoadTypeEnum } from 'lavalink-api-types';
 import { KirishimaPartialTrack } from './Structures/KirishimaPartialTrack';
@@ -14,10 +14,7 @@ export class KirishimaDeezer extends KirishimaPlugin {
 
 	private baseURL = 'https://api.deezer.com/';
 	private regex = /^(?:https?:\/\/|)?(?:www\.)?deezer\.com\/(?:\w{2}\/)?(?<type>track|album|playlist)\/(?<id>\d+)/;
-	private _resolveTracks!: (
-		options: string | { source?: string | undefined; query: string },
-		node?: KirishimaNode
-	) => Promise<LoadTrackResponse<KirishimaPartialTrack | KirishimaTrack>>;
+	private _resolveTracks!: (options: string | { source?: string | undefined; query: string }, node?: KirishimaNode) => Promise<LoadTrackResponse>;
 
 	public constructor() {
 		super({
@@ -31,14 +28,11 @@ export class KirishimaDeezer extends KirishimaPlugin {
 		kirishima.resolveTracks = this.resolveTracks.bind(this);
 	}
 
-	public resolveTracks(
-		options: string | { source?: string | undefined; query: string },
-		node?: KirishimaNode
-	): Promise<LoadTrackResponse<KirishimaPartialTrack | KirishimaTrack>> {
+	public resolveTracks(options: string | { source?: string | undefined; query: string }, node?: KirishimaNode): Promise<LoadTrackResponse> {
 		const query = typeof options === 'string' ? options : options.query;
 		const source = typeof options === 'string' ? undefined : options.source;
 		if (source === 'deezer') {
-			return this.searchTracks(query) as unknown as Promise<LoadTrackResponse<KirishimaPartialTrack | KirishimaTrack>>;
+			return this.searchTracks(query) as unknown as Promise<LoadTrackResponse>;
 		}
 
 		const [, type, id] = query.match(this.regex) ?? [];
@@ -46,7 +40,7 @@ export class KirishimaDeezer extends KirishimaPlugin {
 		if (type in this.resolvers) {
 			const resolver = this.resolvers[type as keyof typeof this.resolvers];
 			if (resolver) {
-				return resolver(id) as unknown as Promise<LoadTrackResponse<KirishimaPartialTrack | KirishimaTrack>>;
+				return resolver(id) as unknown as Promise<LoadTrackResponse>;
 			}
 		}
 

@@ -31,15 +31,20 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write {src,tests}/**/*.ts",
     "prepareForRelease": "npm run build && npm run format && npm run lint && npm run lint:fix",
+    "test": "jest test",
     "release": "npm publish --access public"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
     "@babel/types": "7.17.0",
     "@sapphire/eslint-config": "4.3.2",
     "@sapphire/prettier-config": "1.4.1",
     "@sapphire/ts-config": "3.3.3",
+    "@types/jest": "^27.4.1",
     "@types/ws": "^8.5.3",
     "eslint": "8.11.0",
+    "jest": "^27.5.1",
     "prettier": "2.6.0",
     "rimraf": "3.0.2",
     "typescript": "4.6.2",
@@ -47,7 +52,7 @@
   },
   "prettier": "@sapphire/prettier-config",
   "dependencies": {
-    "@kirishima/core": "^0.6.3",
+    "@kirishima/core": "^0.6.4",
     "@kirishima/fetch": "^0.2.1",
     "lavalink-api-types": "^0.1.9",
     "undici": "^4.16.0"

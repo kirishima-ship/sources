@@ -20,7 +20,8 @@
     "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepareForRelease": "turbo run prepareForRelease",
-    "release": "turbo run release"
+    "release": "turbo run release",
+    "test": "turbo run test"
   },
   "devDependencies": {
     "prettier": "^2.5.1",
