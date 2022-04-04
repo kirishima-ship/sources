@@ -16,6 +16,14 @@ export interface DeezerPlaylist {
 }
 
 export interface DeezerAlbum {
+	tracks: {
+		data: Omit<DeezerTrack, 'album'>[];
+	};
+	cover_small: string;
+	title: string;
+}
+
+export interface DeezerAlbum {
 	id: number;
 	title: string;
 	cover_small: string;

@@ -3,7 +3,7 @@ import { fetch, FetchResultTypes } from '@kirishima/fetch';
 import { LoadTypeEnum } from 'lavalink-api-types';
 import { KirishimaPartialTrack } from './Structures/KirishimaPartialTrack';
 import { KirishimaPlayer } from './Structures/KirisihimaPlayer';
-import type { DeezerPlaylist, DeezerTrack } from './typings';
+import type { DeezerAlbum, DeezerPlaylist, DeezerTrack } from './typings';
 
 export class KirishimaDeezer extends KirishimaPlugin {
 	private resolvers = {
@@ -89,8 +89,8 @@ export class KirishimaDeezer extends KirishimaPlugin {
 
 	public async loadAlbum(identifier: string) {
 		try {
-			const deezer_playlist = await fetch<DeezerPlaylist>(`${this.baseURL}/album/${identifier}`, undefined, FetchResultTypes.JSON);
-			if (deezer_playlist.tracks.data.length === 0) {
+			const deezer_album = await fetch<DeezerAlbum>(`${this.baseURL}/album/${identifier}`, undefined, FetchResultTypes.JSON);
+			if (deezer_album.tracks.data.length === 0) {
 				return {
 					loadType: LoadTypeEnum.NO_MATCHES,
 					tracks: []
@@ -100,11 +100,11 @@ export class KirishimaDeezer extends KirishimaPlugin {
 			return {
 				loadType: LoadTypeEnum.PLAYLIST_LOADED,
 				playlistInfo: {
-					name: deezer_playlist.title
+					name: deezer_album.title
 				},
-				tracks: deezer_playlist.tracks.data.map((track) => {
+				tracks: deezer_album.tracks.data.map((track) => {
 					return new KirishimaPartialTrack({
-						artworkUrl: track.album.cover_small,
+						artworkUrl: deezer_album.cover_small,
 						isrc: track.isrc ?? null,
 						info: {
 							title: track.title,

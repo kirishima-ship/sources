@@ -30,6 +30,13 @@ test('Do get single track', async () => {
 	expect(tracks.tracks.length).not.toBe(0);
 });
 
+test('Do get album tracks', async () => {
+	if (!kirishima.options.clientId && !kirishima.nodes.size) await kirishima.initialize(crypto.randomBytes(10).toString('hex'));
+	const tracks = await kirishima.resolveTracks('https://www.deezer.com/en/album/257891342', kirishima.nodes.first());
+	expect(tracks.loadType).toBe(LoadTypeEnum.PLAYLIST_LOADED);
+	expect(tracks.tracks.length).not.toBe(0);
+});
+
 test('Do get playlist tracks', async () => {
 	if (!kirishima.options.clientId && !kirishima.nodes.size) await kirishima.initialize(crypto.randomBytes(10).toString('hex'));
 	const tracks = await kirishima.resolveTracks('https://www.deezer.com/en/playlist/9314027622', kirishima.nodes.first());
