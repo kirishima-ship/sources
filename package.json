@@ -20,7 +20,7 @@
     "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepareForRelease": "turbo run prepareForRelease",
-    "release": "turbo run release",
+    "release": "npx lerna publish from-package --yes",
     "test": "turbo run test"
   },
   "devDependencies": {
