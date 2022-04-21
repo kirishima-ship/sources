@@ -55,6 +55,6 @@
     "@kirishima/core": "^0.6.4",
     "@kirishima/fetch": "^0.2.1",
     "lavalink-api-types": "^0.1.9",
-    "undici": "^4.16.0"
+    "undici": "^5.0.0"
   }
 }
