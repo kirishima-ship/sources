@@ -41,5 +41,5 @@
     "node": ">=14.0.0"
   },
   "prettier": "@sapphire/prettier-config",
-  "packageManager": "npm@8.1.0"
+  "packageManager": "npm@8.19.4"
 }
