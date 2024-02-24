@@ -28,7 +28,7 @@
     "@sapphire/eslint-config": "4.3.2",
     "@sapphire/prettier-config": "1.4.1",
     "@sapphire/ts-config": "3.3.3",
-    "eslint": "8.11.0",
+    "eslint": "8.57.0",
     "lerna": "^4.0.0",
     "prettier": "^2.5.1",
     "rimraf": "3.0.2",
