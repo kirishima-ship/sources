@@ -37,7 +37,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@babel/types": "7.17.0",
+    "@babel/types": "7.24.0",
     "@sapphire/eslint-config": "4.3.2",
     "@sapphire/prettier-config": "1.4.1",
     "@sapphire/ts-config": "3.3.3",
